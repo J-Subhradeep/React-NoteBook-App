@@ -2,13 +2,13 @@ import React from "react";
 import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button";
 import { NavLink } from "react-router-dom";
-function Login() {
+function SignUp() {
 	return (
 		<div style={{ marginTop: "60px" }}>
 			
 			<div className="maindivforlogin container">
 
-				<div className="formdiv-for-login" style={{ padding: "20px" }}>
+				<div className="formdiv-for-signup" style={{ padding: "20px",position:"relative" }}>
 				<i className="fas fa-book-reader login-logo-g"/>
 					<TextField
 						id="outlined-password-input"
@@ -17,10 +17,25 @@ function Login() {
 						autoComplete="current-password"
 						style={{ width: "100%", marginBottom: "10px", marginTop: "10px" }}
 					/>
+				
+					<TextField
+						id="outlined-password-input"
+						label="Username"
+						type="text"
+						autoComplete="current-password"
+						style={{ width: "100%", marginBottom: "10px" }}
+					/>
 
 					<TextField
 						id="outlined-password-input"
 						label="Password"
+						type="password"
+						autoComplete="current-password"
+						style={{ width: "100%", marginBottom: "10px"  }}
+					/>
+					<TextField
+						id="outlined-password-input"
+						label="Confirm Password"
 						type="password"
 						autoComplete="current-password"
 						style={{ width: "100%" }}
@@ -30,11 +45,11 @@ function Login() {
 						color="primary"
 						style={{ marginTop: "10px", width: "100%" }}
 					>
-						Log In
+						Sign Up
 					</Button>
-					<NavLink to="/signup">
+					<NavLink to="/login">
 						<h4 style={{ fontSize: "12px", marginTop: "15px" }}>
-							Register For a New Account
+							Have an existing account ?
 						</h4>
 					</NavLink>
 				</div>
@@ -43,4 +58,4 @@ function Login() {
 	);
 }
 
-export default Login;
+export default SignUp;

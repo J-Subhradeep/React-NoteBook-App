@@ -1,5 +1,4 @@
 import React from "react";
-import Navbar from "./navbar";
 import Container from "@mui/material/Container";
 import Autocomplete from "@mui/material/Autocomplete";
 import TextField from "@mui/material/TextField";
@@ -8,8 +7,7 @@ import SearchIcon from "@mui/icons-material/Search";
 import Menu from "@mui/material/Menu";
 import MenuItem from "@mui/material/MenuItem";
 import ReadMoreIcon from "@mui/icons-material/ReadMore";
-import ModeEditOutlineIcon from "@mui/icons-material/ModeEditOutline";
-import DeleteIcon from "@mui/icons-material/Delete";
+
 import Post from "./post";
 function Home() {
 	const [anchorEl, setAnchorEl] = React.useState(null);
@@ -27,13 +25,12 @@ function Home() {
 		{ title: "The Dark Knight", year: 2008 },
 		{ title: "12 Angry Men", year: 1957 },
 		{ title: "Schindler's List", year: 1993 },
+		{ title: "The Godfather: Part II", year: 1974 },
+		{ title: "The Dark Knight", year: 2008 },
+		{ title: "12 Angry Men", year: 1957 },
+		{ title: "Schindler's List", year: 1993 },
 	];
-	const newtxt = `Lore 
-m ipsum dolor sit amet consectetur adipisicing elit.
-Totam voluptates aut eveniet atque, odit ipsum repudiandae blanditiis aperiam tempora provident harum et exercitationemtemporibus excepturi nihil eius! Consectetur
-accusantiummolestias debitis magni laborum nesciunt ut
-incidunt voluptate corporis, eum quas aspernatur fugiat qui
-explicabo earum ad perferendis assumenda vel. Amet.`;
+
 	return (
 		<>
 			<Container
@@ -42,7 +39,6 @@ explicabo earum ad perferendis assumenda vel. Amet.`;
 				style={{
 					position: "absolute",
 					top: "60px",
-					// backgroundColor: "blue",
 					paddingLeft: "35px",
 					paddingRight: "35px",
 					overflow: "hidden",
@@ -104,7 +100,6 @@ explicabo earum ad perferendis assumenda vel. Amet.`;
 									}}
 								>
 									<MenuItem onClick={handleClose}>Profile</MenuItem>
-
 									<MenuItem onClick={handleClose}>Logout</MenuItem>
 								</Menu>
 							</div>

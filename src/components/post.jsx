@@ -1,10 +1,6 @@
 import React from "react";
 // import Navbar from './navbar'
 import Button from "@mui/material/Button";
-import SearchIcon from "@mui/icons-material/Search";
-import Menu from "@mui/material/Menu";
-import MenuItem from "@mui/material/MenuItem";
-import ReadMoreIcon from "@mui/icons-material/ReadMore";
 import ModeEditOutlineIcon from "@mui/icons-material/ModeEditOutline";
 import DeleteIcon from "@mui/icons-material/Delete";
 function Post() {
@@ -28,7 +24,7 @@ explicabo earum ad perferendis assumenda vel. Amet.`;
 			>
 				<div className="titlebody" style={{ borderBottom: "1px solid white" }}>
 					<div className="title">
-						<span style={{ fontSize: "30px", fontStyle: "italic" }}>
+						<span style={{ fontSize: "30px", fontStyle: "italic", paddingBottom:"10px" }}>
 							Lorem ipsum dolor sit amet consectetur adipisicing elit. A, omnis.
 						</span>
 					</div>
