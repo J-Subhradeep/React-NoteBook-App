@@ -21,6 +21,7 @@
 }
 .inp-search {
 	min-width: 150px;
+	margin-left: 20px;
 }
 .header-end {
 	display: grid;
@@ -47,11 +48,14 @@
 }
 @media screen and (max-width: 462px) {
 	.inp-yy {
-		display: none;
+		display: flex;
 	}
 	.homeheaderdiv {
 		/* grid-template-columns: 0.5fr 6fr 1fr; */
-		grid-template-rows: 0fr 1fr 0fr;
+		display: flex;
+		/* grid-template-rows: 0fr 1fr 0fr; */
+		/* align-items: center; */
+		justify-content: right;
 		border: none;
 	}
 	.header-end {

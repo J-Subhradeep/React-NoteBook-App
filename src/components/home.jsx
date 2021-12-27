@@ -43,8 +43,8 @@ explicabo earum ad perferendis assumenda vel. Amet.`;
 					position: "absolute",
 					top: "60px",
 					// backgroundColor: "blue",
-					paddingLeft: "25px",
-					paddingRight: "25px",
+					paddingLeft: "35px",
+					paddingRight: "35px",
 					overflow: "hidden",
 				}}
 			>

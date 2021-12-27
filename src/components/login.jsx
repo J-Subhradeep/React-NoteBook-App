@@ -7,7 +7,12 @@ function Login() {
 		<div style={{ marginTop: "60px" }}>
 			<div className="background-image-blur"></div>
 			<div className="maindivforlogin">
-				<div className="image-div-for-login"></div>
+				<div className="image-div-for-login">
+					<h1 className="application-name-login-page">
+						<i className="fas fa-book-reader px-3"></i>DR.NoteBook
+					</h1>
+					<i class="fas fa-feather" id="login-page-image"></i>
+				</div>
 				<div className="formdiv-for-login" style={{ padding: "20px" }}>
 					<TextField
 						id="outlined-password-input"
