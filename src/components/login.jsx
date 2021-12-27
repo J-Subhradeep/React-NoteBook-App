@@ -4,12 +4,10 @@ import Button from "@mui/material/Button";
 import { NavLink } from "react-router-dom";
 function Login() {
 	return (
-		<div style={{ marginTop: "60px" }}>
-			
+		<div style={{ backgroundColor: "white" }}>
 			<div className="maindivforlogin container">
-
 				<div className="formdiv-for-login" style={{ padding: "20px" }}>
-				<i className="fas fa-book-reader login-logo-g"/>
+					<i className="fas fa-book-reader login-logo-g" />
 					<TextField
 						id="outlined-password-input"
 						label="Email"

@@ -5,7 +5,17 @@ import FormatAlignJustifyIcon from "@mui/icons-material/FormatAlignJustify";
 import ToggleButton from "@mui/material/ToggleButton";
 import ArrowBackIosNewIcon from "@mui/icons-material/ArrowBackIosNew";
 import ButtonGroup from "@mui/material/ButtonGroup";
-function navbar() {
+import IconButton from "@mui/material/IconButton";
+import Tooltip from "@mui/material/Tooltip";
+import Avatar from "@mui/material/Avatar";
+import Menu from "@mui/material/Menu";
+import MenuItem from "@mui/material/MenuItem";
+import FormControlLabel from "@mui/material/FormControlLabel";
+import Switch from "@mui/material/Switch";
+import { styled } from "@mui/material/styles";
+import { useState } from "react";
+function Navbar() {
+	const label = { inputProps: { "aria-label": "Switch demo" } };
 	window.onresize = () => {
 		let sidebar = document.getElementById("side-nav");
 		console.log(window.innerWidth);
@@ -27,6 +37,15 @@ function navbar() {
 		// } else {
 		// 	sidebar.style.width = "0";
 		// }
+	};
+
+	const [anchorEl, setAnchorEl] = React.useState(null);
+	const open = Boolean(anchorEl);
+	const handleClick = (event) => {
+		setAnchorEl(event.currentTarget);
+	};
+	const handleClose = () => {
+		setAnchorEl(null);
 	};
 	return (
 		<nav style={{ overflow: "hidden" }}>
@@ -64,54 +83,32 @@ function navbar() {
 								</NavLink>
 							</Button>
 						</ButtonGroup>
-
-						{/* <ul className="list-group list-group-horizontal">
-							<NavLink to="/" style={{ textDecoration: "none" }}>
-								<li className="list-group-item" style={{ height: "100%" }}>
-									<Button variant="text">HOME</Button>
-								</li>
-							</NavLink>
-							<NavLink to="/post" style={{ textDecoration: "none" }}>
-								<li className="list-group-item">
-									<Button variant="text">POST</Button>
-								</li>
-							</NavLink>
-							<NavLink to="/profile" style={{ textDecoration: "none" }}>
-								<li className="list-group-item">
-									<Button variant="text">PROFILE</Button>
-								</li>
-							</NavLink>
-							<NavLink to="/contact" style={{ textDecoration: "none" }}>
-								<li className="list-group-item">
-									<Button variant="text">CONTACT</Button>
-								</li>
-							</NavLink>
-						</ul> */}
 					</div>
 					<div className="profile">
-						<ul className="list-group list-group-horizontal">
-							<li className="list-group-item border-0">
-								<Button variant="contained">
-									<NavLink
-										to="/login"
-										style={{ textDecoration: "none", color: "white" }}
-									>
-										Log In
-									</NavLink>
-								</Button>
-							</li>
+						<Tooltip title="Account Setting">
+							<IconButton
+								id="basic-button"
+								aria-controls={open ? "basic-menu" : undefined}
+								aria-haspopup="true"
+								aria-expanded={open ? "true" : undefined}
+								onClick={handleClick}
+							>
+								<Avatar>H</Avatar>
+							</IconButton>
+						</Tooltip>
+						<Menu
+							id="basic-menu"
+							anchorEl={anchorEl}
+							open={open}
+							onClose={handleClose}
+							MenuListProps={{
+								"aria-labelledby": "basic-button",
+							}}
+						>
+							<MenuItem onClick={handleClose}>Edit Profile</MenuItem>
 
-							<li className="list-group-item border-0">
-								<Button variant="contained">
-									<NavLink
-										to="/signup"
-										style={{ textDecoration: "none", color: "white" }}
-									>
-										Sign Up
-									</NavLink>
-								</Button>
-							</li>
-						</ul>
+							<MenuItem onClick={handleClose}>Logout</MenuItem>
+						</Menu>
 					</div>
 				</div>
 				<div className="menubar">
@@ -135,22 +132,7 @@ function navbar() {
 					</Button>
 				</div>
 				<div className="profile-side p-3">
-					<Button variant="contained">
-						<NavLink
-							to="/login"
-							style={{ textDecoration: "none", color: "white" }}
-						>
-							Log In
-						</NavLink>
-					</Button>
-					<Button variant="contained">
-						<NavLink
-							to="/signup"
-							style={{ textDecoration: "none", color: "white" }}
-						>
-							Sing Up
-						</NavLink>
-					</Button>
+					<i className="fas fa-book-reader login-logo-g" />
 				</div>
 				<div className="menu-side">
 					<div className="list-group">
@@ -191,4 +173,4 @@ function navbar() {
 	);
 }
 
-export default navbar;
+export default Navbar;

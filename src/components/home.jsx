@@ -7,7 +7,7 @@ import SearchIcon from "@mui/icons-material/Search";
 import Menu from "@mui/material/Menu";
 import MenuItem from "@mui/material/MenuItem";
 import ReadMoreIcon from "@mui/icons-material/ReadMore";
-
+import Navbar from "./navbar";
 import Post from "./post";
 function Home() {
 	const [anchorEl, setAnchorEl] = React.useState(null);
@@ -33,6 +33,7 @@ function Home() {
 
 	return (
 		<>
+			<Navbar />
 			<Container
 				maxWidth="100vw"
 				minWidth="300px"
@@ -48,7 +49,7 @@ function Home() {
 					<div className="homeheaderdiv">
 						<div></div>
 						<div
-							className="background"
+							// className="background"
 							className="inp-search"
 							style={{ backgroundColor: "white" }}
 						>
