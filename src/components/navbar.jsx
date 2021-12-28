@@ -10,12 +10,10 @@ import Tooltip from "@mui/material/Tooltip";
 import Avatar from "@mui/material/Avatar";
 import Menu from "@mui/material/Menu";
 import MenuItem from "@mui/material/MenuItem";
-import FormControlLabel from "@mui/material/FormControlLabel";
-import Switch from "@mui/material/Switch";
-import { styled } from "@mui/material/styles";
-import { useState } from "react";
+
+
 function Navbar() {
-	const label = { inputProps: { "aria-label": "Switch demo" } };
+	
 	window.onresize = () => {
 		let sidebar = document.getElementById("side-nav");
 		console.log(window.innerWidth);
