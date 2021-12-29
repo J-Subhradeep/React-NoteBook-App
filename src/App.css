@@ -2,7 +2,14 @@
   padding: 0;
   margin: 0;
 }
-
+#alert {
+  display: none;
+  /* visibility: hidden; */
+}
+#alerts {
+  display: none;
+  /* visibility: hidden; */
+}
 body {
   min-width: 250px;
   background-color: rgba(0, 0, 0, 0.144);

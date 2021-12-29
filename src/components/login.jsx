@@ -19,6 +19,9 @@ function Login() {
 			<div className="maindivforlogin container">
 				<div className="formdiv-for-login" style={{ padding: "30px" }}>
 					<i className="fas fa-book-reader login-logo-g" />
+					<div className="alert alert-danger mt-2" id="alert" role="alert">
+  						Credential Error
+					</div>
 					<TextField
 						id="outlined-password-input"
 						label="Email"
@@ -28,7 +31,7 @@ function Login() {
 							setEmail(e.target.value);
 						}}
 						autoComplete="current-password"
-						style={{ width: "100%", marginBottom: "10px", marginTop: "10px" }}
+						style={{ width: "100%", marginBottom: "10px",marginTop: "5px"}}
 					/>
 
 					<TextField
@@ -68,7 +71,9 @@ function Login() {
 											});
 									})
 									.catch((error) => {
-										alert("Credential Error");
+										let alert = document.getElementById('alert')
+										alert.style.display = "block"
+										// alert("Credential Error");
 									});
 							} catch (error) {
 								console.log(error);
