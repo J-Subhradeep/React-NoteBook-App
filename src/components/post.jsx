@@ -3,14 +3,13 @@ import React from "react";
 import Button from "@mui/material/Button";
 import ModeEditOutlineIcon from "@mui/icons-material/ModeEditOutline";
 import DeleteIcon from "@mui/icons-material/Delete";
-function Post() {
-
-	const newtxt = `Lore 
-m ipsum dolor sit amet consectetur adipisicing elit.
-Totam voluptates aut eveniet atque, odit ipsum repudiandae blanditiis aperiam tempora provident harum et exercitationemtemporibus excepturi nihil eius! Consectetur
-accusantiummolestias debitis magni laborum nesciunt ut
-incidunt voluptate corporis, eum quas aspernatur fugiat qui
-explicabo earum ad perferendis assumenda vel. Amet.`;
+function Post(props) {
+	const newtxt = props.data.description;
+	console.log(props.data);
+	function getDateTime(data) {
+		var date = new Date(data);
+		return date.toLocaleString();
+	}
 	return (
 		<>
 			{/* <Navbar/> */}
@@ -24,8 +23,14 @@ explicabo earum ad perferendis assumenda vel. Amet.`;
 			>
 				<div className="titlebody" style={{ borderBottom: "1px solid white" }}>
 					<div className="title">
-						<span style={{ fontSize: "30px", fontStyle: "italic", paddingBottom:"10px" }}>
-							Lorem ipsum dolor sit amet consectetur adipisicing elit. A, omnis.
+						<span
+							style={{
+								fontSize: "30px",
+								fontStyle: "italic",
+								paddingBottom: "10px",
+							}}
+						>
+							{props.data.title}
 						</span>
 					</div>
 
@@ -56,7 +61,7 @@ explicabo earum ad perferendis assumenda vel. Amet.`;
 						</Button>
 					</div>
 					<div className="time">
-						<span className="time">Time : 12:12:00 AM</span>
+						<span className="time">{getDateTime(props.data.time)}</span>
 					</div>
 				</div>
 

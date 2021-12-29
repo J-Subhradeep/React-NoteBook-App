@@ -37,7 +37,7 @@ function Home() {
 	const handleClose = () => {
 		setAnchorEl(null);
 	};
-	const top100Films = [
+	const gg = [
 		{ title: "The Shawshank Redemption", year: 1994 },
 		{ title: "The Godfather", year: 1972 },
 		{ title: "The Godfather: Part II", year: 1974 },
@@ -49,7 +49,15 @@ function Home() {
 		{ title: "12 Angry Men", year: 1957 },
 		{ title: "Schindler's List", year: 1993 },
 	];
-
+	const [notes, setNotes] = useState([]);
+	useEffect(() => {
+		// console.log("hallow");
+		var token = localStorage.getItem("token");
+		axios
+			.post("http://127.0.0.1:8000/notes/", { token: token })
+			.then((a) => setNotes(a.data));
+		console.log(notes);
+	}, []);
 	return (
 		<>
 			<Navbar />
@@ -76,7 +84,7 @@ function Home() {
 								freeSolo
 								id="free-solo-2-demo"
 								disableClearable
-								options={top100Films.map((option) => option.title)}
+								options={notes.map((option) => option.title)}
 								renderInput={(params) => (
 									<TextField
 										className="inp"
@@ -128,9 +136,13 @@ function Home() {
 				</header>
 				<main>
 					<div className="container">
+						{notes.map((value, key) => {
+							return <Post data={value} />;
+						})}
+
+						{/* 						
 						<Post />
-						<Post />
-						<Post />
+						<Post /> */}
 					</div>
 				</main>
 			</Container>
