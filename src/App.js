@@ -6,25 +6,31 @@ import Home from "./components/home";
 
 import Login from "./components/login";
 import SignUp from "./components/signup";
+import { useState } from "react";
 
 function App() {
 	const SignInWrap = () => {
 		let isLoggedIn = false;
+		
+		const [id, setState] = useState(localStorage.getItem('user_id'))
+		if (id){
+			isLoggedIn = true
+		} 
 		if (isLoggedIn) {
-			return <Navigate to="/" replace />;
+			return <Home />;
 		} else {
-			return <Navigate to="/login" replace />;
+			return <Login/>;
 		}
 	};
 	return (
 		<>
 			<BrowserRouter>
 				<Routes>
-					<Route exact path="/login" element={<Login />} />
+					<Route exact path="/login" element={<SignInWrap />} />
 					<Route exact path="/signup" element={<SignUp />} />
-					<Route exact path="/" element={<Home />} />
+					<Route exact path="/" element={<SignInWrap />} />
 
-					<Route path="/:fas" element={<SignInWrap />} />
+					<Route exact path="/home" element={<SignInWrap />} />
 					{/* <Post/> */}
 					{/* </Route> */}
 				</Routes>

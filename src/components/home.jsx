@@ -1,4 +1,4 @@
-import React from "react";
+import React,{useState,useEffect} from "react";
 import Container from "@mui/material/Container";
 import Autocomplete from "@mui/material/Autocomplete";
 import TextField from "@mui/material/TextField";
@@ -9,7 +9,17 @@ import MenuItem from "@mui/material/MenuItem";
 import ReadMoreIcon from "@mui/icons-material/ReadMore";
 import Navbar from "./navbar";
 import Post from "./post";
+import axios from "axios";
+
 function Home() {
+	const [userData, setUserData] = useState({})
+	useEffect(() => {
+		
+		axios.post(`http://127.0.0.1:8000/user/`,{id:localStorage.getItem('user_id')}).then(res=>{
+		console.log(res.data);	
+		setUserData(res.data)})
+	
+	}, [])
 	const [anchorEl, setAnchorEl] = React.useState(null);
 	const open = Boolean(anchorEl);
 	const handleClick = (event) => {
@@ -51,7 +61,7 @@ function Home() {
 						<div
 							// className="background"
 							className="inp-search"
-							style={{ backgroundColor: "white" }}
+							style={{ backgroundColor: "white",borderRadius:"10px" }}
 						>
 							<Autocomplete
 								freeSolo
@@ -74,7 +84,7 @@ function Home() {
 						</div>
 						<div className="header-end">
 							<Button
-								variant="outlined"
+								variant="contained"
 								className="inp"
 								style={{ height: "100%" }}
 							>

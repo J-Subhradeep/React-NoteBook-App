@@ -1,4 +1,4 @@
-import React from "react";
+import React,{useEffect,useState} from "react";
 import { NavLink } from "react-router-dom";
 import Button from "@mui/material/Button";
 import FormatAlignJustifyIcon from "@mui/icons-material/FormatAlignJustify";
@@ -10,10 +10,20 @@ import Tooltip from "@mui/material/Tooltip";
 import Avatar from "@mui/material/Avatar";
 import Menu from "@mui/material/Menu";
 import MenuItem from "@mui/material/MenuItem";
+import axios from "axios";
 
-
-function Navbar() {
+function Navbar(props) {
+	const [userData, setUserData] = useState({})
+	const [username, setusername] = useState('o')
+	useEffect(() => {
+		
+		axios.post(`http://127.0.0.1:8000/user/`,{id:localStorage.getItem('user_id')}).then(res=>{
+		console.log(res.data);	
+		setUserData(res.data);
+		setusername(res.data.username.charAt(0).toUpperCase());
+	})
 	
+	}, [])
 	window.onresize = () => {
 		let sidebar = document.getElementById("side-nav");
 		console.log(window.innerWidth);
@@ -43,6 +53,7 @@ function Navbar() {
 		setAnchorEl(event.currentTarget);
 	};
 	const handleClose = () => {
+		console.log("hallow");
 		setAnchorEl(null);
 	};
 	return (
@@ -91,7 +102,7 @@ function Navbar() {
 								aria-expanded={open ? "true" : undefined}
 								onClick={handleClick}
 							>
-								<Avatar>H</Avatar>
+								<Avatar>{username}</Avatar>
 							</IconButton>
 						</Tooltip>
 						<Menu
@@ -105,7 +116,7 @@ function Navbar() {
 						>
 							<MenuItem onClick={handleClose}>Edit Profile</MenuItem>
 
-							<MenuItem onClick={handleClose}>Logout</MenuItem>
+							<MenuItem onClick={()=>{localStorage.clear();window.location.reload()}}>Logout</MenuItem>
 						</Menu>
 					</div>
 				</div>

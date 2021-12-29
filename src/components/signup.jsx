@@ -8,7 +8,7 @@ function SignUp() {
 			
 			<div className="maindivforlogin container">
 
-				<div className="formdiv-for-signup" style={{ padding: "20px",position:"relative" }}>
+				<div className="formdiv-for-signup" style={{ padding: "30px",position:"relative",backgroundColor:"white" }}>
 				<i className="fas fa-book-reader login-logo-g"/>
 					<TextField
 						id="outlined-password-input"

@@ -4,7 +4,7 @@ import Button from "@mui/material/Button";
 import ModeEditOutlineIcon from "@mui/icons-material/ModeEditOutline";
 import DeleteIcon from "@mui/icons-material/Delete";
 function Post() {
-	console.log("hallow");
+
 	const newtxt = `Lore 
 m ipsum dolor sit amet consectetur adipisicing elit.
 Totam voluptates aut eveniet atque, odit ipsum repudiandae blanditiis aperiam tempora provident harum et exercitationemtemporibus excepturi nihil eius! Consectetur
