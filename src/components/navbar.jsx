@@ -1,4 +1,4 @@
-import React,{useEffect,useState} from "react";
+import React, { useEffect, useState } from "react";
 import { NavLink } from "react-router-dom";
 import Button from "@mui/material/Button";
 import FormatAlignJustifyIcon from "@mui/icons-material/FormatAlignJustify";
@@ -11,24 +11,29 @@ import Avatar from "@mui/material/Avatar";
 import Menu from "@mui/material/Menu";
 import MenuItem from "@mui/material/MenuItem";
 import axios from "axios";
-
+import { useNavigate } from "react-router-dom";
 function Navbar(props) {
-	const [userData, setUserData] = useState({})
-	const [username, setusername] = useState('o')
+	var navigate = useNavigate();
+	const [userData, setUserData] = useState({});
+	const [username, setusername] = useState("o");
 	useEffect(() => {
-		
-		axios.post(`http://127.0.0.1:8000/user/`,{id:localStorage.getItem('user_id')}).then(res=>{
-		console.log(res.data);	
-		setUserData(res.data);
-		setusername(res.data.username.charAt(0).toUpperCase());
-	})
-	
-	}, [])
+		axios
+			.post(`http://127.0.0.1:8000/user/`, {
+				id: localStorage.getItem("user_id"),
+			})
+			.then((res) => {
+				console.log(res.data);
+				setUserData(res.data);
+				setusername(res.data.username.charAt(0).toUpperCase());
+			});
+	}, []);
 	window.onresize = () => {
 		let sidebar = document.getElementById("side-nav");
-		console.log(window.innerWidth);
-		if (window.innerWidth > 800) {
-			sidebar.className = "side-nav";
+		if (sidebar != null) {
+			console.log(window.innerWidth);
+			if (window.innerWidth > 800) {
+				sidebar.className = "side-nav";
+			}
 		}
 	};
 	const togglesidebar = () => {
@@ -116,7 +121,14 @@ function Navbar(props) {
 						>
 							<MenuItem onClick={handleClose}>Edit Profile</MenuItem>
 
-							<MenuItem onClick={()=>{localStorage.clear();window.location.reload()}}>Logout</MenuItem>
+							<MenuItem
+								onClick={() => {
+									localStorage.clear();
+									navigate("/login");
+								}}
+							>
+								Logout
+							</MenuItem>
 						</Menu>
 					</div>
 				</div>

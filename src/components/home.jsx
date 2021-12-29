@@ -1,4 +1,4 @@
-import React,{useState,useEffect} from "react";
+import React, { useState } from "react";
 import Container from "@mui/material/Container";
 import Autocomplete from "@mui/material/Autocomplete";
 import TextField from "@mui/material/TextField";
@@ -10,16 +10,25 @@ import ReadMoreIcon from "@mui/icons-material/ReadMore";
 import Navbar from "./navbar";
 import Post from "./post";
 import axios from "axios";
-
+import { useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 function Home() {
-	const [userData, setUserData] = useState({})
+	var navigate = useNavigate();
+
+	const [userData, setUserData] = useState({});
 	useEffect(() => {
-		
-		axios.post(`http://127.0.0.1:8000/user/`,{id:localStorage.getItem('user_id')}).then(res=>{
-		console.log(res.data);	
-		setUserData(res.data)})
-	
-	}, [])
+		if (!localStorage.getItem("user_id")) {
+			navigate("/login");
+		}
+		axios
+			.post(`http://127.0.0.1:8000/user/`, {
+				id: localStorage.getItem("user_id"),
+			})
+			.then((res) => {
+				console.log(res.data);
+				setUserData(res.data);
+			});
+	}, []);
 	const [anchorEl, setAnchorEl] = React.useState(null);
 	const open = Boolean(anchorEl);
 	const handleClick = (event) => {
@@ -61,7 +70,7 @@ function Home() {
 						<div
 							// className="background"
 							className="inp-search"
-							style={{ backgroundColor: "white",borderRadius:"10px" }}
+							style={{ backgroundColor: "white", borderRadius: "10px" }}
 						>
 							<Autocomplete
 								freeSolo
