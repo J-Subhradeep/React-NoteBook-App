@@ -88,16 +88,27 @@ const PostData = () => {
 								style={{ width: "100%", marginBottom: "10px" }}
 							/>
 
-							<div className="submitpostbutton" style={{ textAlign: "right" }}>
-								<IconButton aria-label="delete" size="small">
-									<InsertEmoticonIcon
-										fontSize="small"
-										onClick={() => {
-											setChosenEmoji((prev) => !prev);
-											setItem("description");
-										}}
-									/>
-								</IconButton>
+							<div
+								className="submitpostbutton"
+								style={{
+									textAlign: "right",
+									display: "flex",
+									alignItems: "center",
+									justifyContent: "flex-end",
+								}}
+							>
+								<div className="emojiInsert">
+									<IconButton aria-label="delete" size="small">
+										<InsertEmoticonIcon
+											fontSize="small"
+											onClick={() => {
+												setChosenEmoji((prev) => !prev);
+												setItem("description");
+											}}
+										/>
+									</IconButton>
+								</div>
+
 								<Button
 									type="submit"
 									variant="contained"
