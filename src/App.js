@@ -7,6 +7,8 @@ import Home from "./components/home";
 import Login from "./components/login";
 import SignUp from "./components/signup";
 import { useState, useEffect } from "react";
+import PostData from "./components/postData";
+
 
 function App() {
 	// const SignInWrap = () => {
@@ -53,7 +55,7 @@ function App() {
 					<Route exact path="/signup" element={<SignUp />} />
 					{/* <Route exact path="/lg" element={} /> */}
 					<Route exact path="/login" element={<Login />} />
-
+					<Route exact path="/post" element={<PostData/>}/>
 					{/* <Post/> */}
 					{/* </Route> */}
 				</Routes>

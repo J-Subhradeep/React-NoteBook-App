@@ -13,9 +13,9 @@ function SignUp() {
 		cofPassword: "",
 	});
 
-	const [link, setLink] = useState(``);
-	const [text, setText] = useState(`Successfully Registered <br />
-  <NavLink to="/login">Click here to go login page</NavLink>`);
+	const [link, setLink] = useState(`
+	Click here to go login page`);
+	const [text, setText] = useState(`Successfully Registered`);
 	const [classs, setClasss] = useState("alert alert-success mt-2");
 	return (
 		<div style={{ marginTop: "60px" }}>
