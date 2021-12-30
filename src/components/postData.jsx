@@ -6,11 +6,13 @@ import Button from "@mui/material/Button";
 import Picker from "emoji-picker-react";
 import IconButton from "@mui/material/IconButton";
 import InsertEmoticonIcon from "@mui/icons-material/InsertEmoticon";
+import axios from "axios";
 const PostData = () => {
 	const [chosenEmoji, setChosenEmoji] = useState(false);
 	const [item, setItem] = useState();
 	const [description, setDescription] = useState("");
 	const [title, setTitle] = useState("");
+	const [username, setUsername] = useState("");
 	const onEmojiClick = (event, emojiObject) => {
 		var now = document.activeElement;
 		console.log(now);
@@ -30,7 +32,18 @@ const PostData = () => {
 			<Navbar />
 			<div className=" mainpostdatabody">
 				<div className="send-data-form">
-					<form action="">
+					<form
+						action=""
+						onSubmit={(e) => {
+							e.preventDefault();
+							axios.post("http://127.0.0.1:8000/postnotes/", {
+								title: title,
+								description: description,
+								token: localStorage.getItem("token"),
+								username: username,
+							});
+						}}
+					>
 						<div className="container p-3">
 							<div className="title-area">
 								<TextField
@@ -50,6 +63,10 @@ const PostData = () => {
 									required
 									id="outlined-required"
 									label="User Name"
+									value={username}
+									onChange={(e) => {
+										setUsername(e.target.value);
+									}}
 									defaultValue="Hello World"
 								/>
 							</div>
