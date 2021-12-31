@@ -1,0 +1,26 @@
+/* profile page */
+.body-profile {
+  background-color: rgba(37, 36, 36, 0.137);
+  display: grid;
+  grid-template-columns: 1fr 1.5fr;
+}
+.profile-image-div {
+  margin-top: 60px;
+  background-color: red;
+  width: 100%;
+  /* position: absolute; */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.typedtext {
+  position: relative;
+  width: 100%;
+  background-color: transparent;
+  /* height: 100px; */
+  border: none;
+  bottom: 0;
+}
+.typedtext:focus {
+  outline: none;
+}
