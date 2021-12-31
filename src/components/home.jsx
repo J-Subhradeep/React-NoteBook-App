@@ -13,161 +13,174 @@ import axios from "axios";
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 function Home() {
-	var navigate = useNavigate();
+  var navigate = useNavigate();
 
-	const [userData, setUserData] = useState({});
-	useEffect(() => {
-		if (!localStorage.getItem("user_id")) {
-			navigate("/login");
-		}
-		axios
-			.post(`http://127.0.0.1:8000/user/`, {
-				id: localStorage.getItem("user_id"),
-			})
-			.then((res) => {
-				console.log(res.data);
-				setUserData(res.data);
-			});
-	}, []);
-	const [anchorEl, setAnchorEl] = React.useState(null);
-	const open = Boolean(anchorEl);
-	const handleClick = (event) => {
-		setAnchorEl(event.currentTarget);
-	};
-	const handleClose = () => {
-		setAnchorEl(null);
-	};
-	const gg = [
-		{ title: "The Shawshank Redemption", year: 1994 },
-		{ title: "The Godfather", year: 1972 },
-		{ title: "The Godfather: Part II", year: 1974 },
-		{ title: "The Dark Knight", year: 2008 },
-		{ title: "12 Angry Men", year: 1957 },
-		{ title: "Schindler's List", year: 1993 },
-		{ title: "The Godfather: Part II", year: 1974 },
-		{ title: "The Dark Knight", year: 2008 },
-		{ title: "12 Angry Men", year: 1957 },
-		{ title: "Schindler's List", year: 1993 },
-	];
-	const [notes, setNotes] = useState([]);
-	const [mainnotes, setMainNotes] = useState([]);
-	useEffect(() => {
-		// console.log("hallow");
-		var token = localStorage.getItem("token");
-		axios.post("http://127.0.0.1:8000/notes/", { token: token }).then((a) => {
-			setNotes(a.data);
-			setMainNotes(a.data);
-		});
-		console.log(notes);
-	}, []);
-	const [search, setSearch] = useState("");
-	return (
-		<>
-			<Navbar />
-			<Container
-				maxWidth="100vw"
-				minWidth="300px"
-				style={{
-					position: "absolute",
-					top: "60px",
-					paddingLeft: "35px",
-					paddingRight: "35px",
-					overflow: "hidden",
-				}}
-			>
-				<header>
-					<div className="homeheaderdiv">
-						<div></div>
-						<div
-							// className="background"
-							className="inp-search"
-							style={{ backgroundColor: "white", borderRadius: "10px" }}
-						>
-							<Autocomplete
-								freeSolo
-								id="free-solo-2-demo"
-								disableClearable
-								options={notes.map((option) => option.title)}
-								renderInput={(params) => (
-									<TextField
-										className="inp"
-										{...params}
-										label="Search by title"
-										InputProps={{
-											...params.InputProps,
-											type: "search",
-										}}
-										id="searchfield"
-										value={search}
-										onChange={(e) => {
-											setSearch(e.target.value);
-										}}
-									/>
-								)}
-							/>
-						</div>
-						<div className="header-end">
-							<Button
-								variant="contained"
-								className="inp"
-								style={{ height: "100%" }}
-								onClick={() => {
-									let arr = [];
-									for (const i of mainnotes) {
-										let title = i.title.toLowerCase();
-										let s = search.toLowerCase();
-										if (title.includes(s)) {
-											console.log(i.title);
-											arr.push(i);
-										}
-									}
-									console.log(arr);
-									setNotes(arr);
-								}}
-							>
-								<SearchIcon />
-							</Button>
-							<div style={{ justifyContent: "center" }} className="inp-yy">
-								<Button
-									id="basic-button"
-									aria-controls="basic-menu"
-									aria-haspopup="true"
-									aria-expanded={open ? "true" : undefined}
-									onClick={handleClick}
-									style={{ height: "100%" }}
-								>
-									<ReadMoreIcon fontSize="large" />
-								</Button>
-								<Menu
-									id="basic-menu"
-									anchorEl={anchorEl}
-									open={open}
-									onClose={handleClose}
-									MenuListProps={{
-										"aria-labelledby": "basic-button",
-									}}
-								>
-									<MenuItem onClick={handleClose}>Profile</MenuItem>
-									<MenuItem onClick={handleClose}>Logout</MenuItem>
-								</Menu>
-							</div>
-						</div>
-					</div>
-				</header>
-				<main>
-					<div className="container">
-						{notes.map((value, key) => {
-							return <Post data={value} key={key} />;
-						})}
+  const [userData, setUserData] = useState({});
+  useEffect(() => {
+    if (!localStorage.getItem("user_id")) {
+      navigate("/login");
+    }
+    axios
+      .post(`http://127.0.0.1:8000/user/`, {
+        id: localStorage.getItem("user_id"),
+      })
+      .then((res) => {
+        console.log(res.data);
+        setUserData(res.data);
+      });
+  }, []);
 
-						{/* 						
+  const [anchorEl, setAnchorEl] = React.useState(null);
+  const open = Boolean(anchorEl);
+  const handleClick = (event) => {
+    setAnchorEl(event.currentTarget);
+  };
+  const handleClose = () => {
+    setAnchorEl(null);
+  };
+  const gg = [
+    { title: "The Shawshank Redemption", year: 1994 },
+    { title: "The Godfather", year: 1972 },
+    { title: "The Godfather: Part II", year: 1974 },
+    { title: "The Dark Knight", year: 2008 },
+    { title: "12 Angry Men", year: 1957 },
+    { title: "Schindler's List", year: 1993 },
+    { title: "The Godfather: Part II", year: 1974 },
+    { title: "The Dark Knight", year: 2008 },
+    { title: "12 Angry Men", year: 1957 },
+    { title: "Schindler's List", year: 1993 },
+  ];
+  const [notes, setNotes] = useState([]);
+  const [mainnotes, setMainNotes] = useState([]);
+  useEffect(() => {
+    // console.log("hallow");
+    var token = localStorage.getItem("token");
+    axios.post("http://127.0.0.1:8000/notes/", { token: token }).then((a) => {
+      setNotes(a.data);
+      setMainNotes(a.data);
+    });
+    console.log(notes);
+  }, []);
+  const [search, setSearch] = useState("");
+  const handleNotesData = async (childKey) => {
+    var token = localStorage.getItem("token");
+    await axios.delete(`http://127.0.0.1:8000/deletenotes/${childKey}`);
+    await axios
+      .post("http://127.0.0.1:8000/notes/", { token: token })
+      .then((a) => {
+        setNotes(a.data);
+        setMainNotes(a.data);
+      });
+  };
+  return (
+    <>
+      <Navbar />
+      <Container
+        maxWidth="100vw"
+        minWidth="300px"
+        style={{
+          position: "absolute",
+          top: "60px",
+          paddingLeft: "35px",
+          paddingRight: "35px",
+          overflow: "hidden",
+        }}
+      >
+        <header>
+          <div className="homeheaderdiv">
+            <div></div>
+            <div
+              // className="background"
+              className="inp-search"
+              style={{ backgroundColor: "white", borderRadius: "10px" }}
+            >
+              <Autocomplete
+                freeSolo
+                id="free-solo-2-demo"
+                disableClearable
+                options={notes.map((option) => option.title)}
+                renderInput={(params) => (
+                  <TextField
+                    className="inp"
+                    {...params}
+                    label="Search by title"
+                    InputProps={{
+                      ...params.InputProps,
+                      type: "search",
+                    }}
+                    id="searchfield"
+                    value={search}
+                    onChange={(e) => {
+                      setSearch(e.target.value);
+                    }}
+                  />
+                )}
+              />
+            </div>
+            <div className="header-end">
+              <Button
+                variant="contained"
+                className="inp"
+                style={{ height: "100%" }}
+                onClick={() => {
+                  let arr = [];
+                  for (const i of mainnotes) {
+                    let title = i.title.toLowerCase();
+                    let s = search.toLowerCase();
+                    if (title.includes(s)) {
+                      console.log(i.title);
+                      arr.push(i);
+                    }
+                  }
+                  console.log(arr);
+                  setNotes(arr);
+                }}
+              >
+                <SearchIcon />
+              </Button>
+              <div style={{ justifyContent: "center" }} className="inp-yy">
+                <Button
+                  id="basic-button"
+                  aria-controls="basic-menu"
+                  aria-haspopup="true"
+                  aria-expanded={open ? "true" : undefined}
+                  onClick={handleClick}
+                  style={{ height: "100%" }}
+                >
+                  <ReadMoreIcon fontSize="large" />
+                </Button>
+                <Menu
+                  id="basic-menu"
+                  anchorEl={anchorEl}
+                  open={open}
+                  onClose={handleClose}
+                  MenuListProps={{
+                    "aria-labelledby": "basic-button",
+                  }}
+                >
+                  <MenuItem onClick={handleClose}>Profile</MenuItem>
+                  <MenuItem onClick={handleClose}>Logout</MenuItem>
+                </Menu>
+              </div>
+            </div>
+          </div>
+        </header>
+        <main>
+          <div className="container">
+            {notes.map((value, key) => {
+              return (
+                <Post data={value} key={key} notesData={handleNotesData} />
+              );
+            })}
+
+            {/* 						
 						<Post />
 						<Post /> */}
-					</div>
-				</main>
-			</Container>
-		</>
-	);
+          </div>
+        </main>
+      </Container>
+    </>
+  );
 }
 
 export default Home;
