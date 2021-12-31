@@ -1,5 +1,5 @@
 import "./App.css";
-import "./profile.css"
+import "./profile.css";
 import { BrowserRouter, Route, Routes, Navigate } from "react-router-dom";
 // import { Redirect } from "react-router";
 // import {Switch} from 'react-router'
@@ -10,7 +10,6 @@ import SignUp from "./components/signup";
 import { useState, useEffect } from "react";
 import PostData from "./components/postData";
 import Profile from "./components/profile";
-
 
 function App() {
 	// const SignInWrap = () => {
@@ -57,8 +56,8 @@ function App() {
 					<Route exact path="/signup" element={<SignUp />} />
 					{/* <Route exact path="/lg" element={} /> */}
 					<Route exact path="/login" element={<Login />} />
-					<Route exact path="/post" element={<PostData/>}/>
-					<Route exact path="/profile" element={<Profile/>}/>
+					<Route exact path="/post" element={<PostData />} />
+					<Route exact path="/about" element={<Profile />} />
 
 					{/* <Post/> */}
 					{/* </Route> */}

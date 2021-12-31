@@ -12,6 +12,7 @@ import Menu from "@mui/material/Menu";
 import MenuItem from "@mui/material/MenuItem";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import { deepOrange, deepPurple } from "@mui/material/colors";
 function Navbar(props) {
 	var navigate = useNavigate();
 	const [userData, setUserData] = useState({});
@@ -86,8 +87,8 @@ function Navbar(props) {
 							</Button>
 
 							<Button>
-								<NavLink to="/profile" style={{ textDecoration: "none" }}>
-									PROFILE
+								<NavLink to="/about" style={{ textDecoration: "none" }}>
+									ABOUT
 								</NavLink>
 							</Button>
 
@@ -107,7 +108,7 @@ function Navbar(props) {
 								aria-expanded={open ? "true" : undefined}
 								onClick={handleClick}
 							>
-								<Avatar>{username}</Avatar>
+								<Avatar sx={{ bgcolor: deepPurple[500] }}>{username}</Avatar>
 							</IconButton>
 						</Tooltip>
 						<Menu
@@ -162,14 +163,19 @@ function Navbar(props) {
 							className="list-group-item list-group-item-action"
 							//   aria-current="true"
 						>
-							<i className="fas fa-home"></i>Home
+							<i className="fas fa-home"></i>
+							<NavLink to="/" style={{ textDecoration: "none" }}>
+								HOME
+							</NavLink>
 						</button>
 						<button
 							type="button"
 							className="list-group-item list-group-item-action"
 						>
 							<i className="fas fa-cloud-upload-alt"></i>
-							Post
+							<NavLink to="/post" style={{ textDecoration: "none" }}>
+								POST
+							</NavLink>
 						</button>
 
 						<button
@@ -177,7 +183,9 @@ function Navbar(props) {
 							className="list-group-item list-group-item-action"
 						>
 							<i className="fas fa-user-circle"></i>
-							Profile
+							<NavLink to="/about" style={{ textDecoration: "none" }}>
+								ABOUT
+							</NavLink>
 						</button>
 
 						<button
@@ -185,7 +193,9 @@ function Navbar(props) {
 							className="list-group-item list-group-item-action"
 						>
 							<i className="fas fa-address-book"></i>
-							Contact
+							<NavLink to="/contact" style={{ textDecoration: "none" }}>
+								CONTACT US
+							</NavLink>
 						</button>
 					</div>
 				</div>
