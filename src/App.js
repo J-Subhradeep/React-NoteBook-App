@@ -1,6 +1,6 @@
 import "./App.css";
 import "./profile.css";
-import { BrowserRouter, Route, Routes, Navigate } from "react-router-dom";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
 // import { Redirect } from "react-router";
 // import {Switch} from 'react-router'
 import Home from "./components/home";
@@ -39,15 +39,7 @@ function App() {
 	// 	}
 	// };
 	// var isLoggedIn = false;
-	const [state, setstate] = useState(false);
-	useEffect(() => {
-		if (localStorage.getItem("user_id")) {
-			setstate(true);
-		} else {
-			setstate(false);
-		}
-	}, []);
-
+	
 	return (
 		<>
 			<BrowserRouter>
