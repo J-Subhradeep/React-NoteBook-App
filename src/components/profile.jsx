@@ -19,7 +19,7 @@ const Profile = () => {
 				<div className="div-profile-page-logo text-center">
 					<figure class="text-center">
 						<blockquote class="blockquote">
-							<h1>DR.NoteBook</h1>
+							<h1>dr.NoteBook</h1>
 						</blockquote>
 						<figcaption class="blockquote-footer">
 							A place to store{" "}

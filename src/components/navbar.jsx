@@ -68,7 +68,7 @@ function Navbar(props) {
 				<div className="logo-center">
 					<div className="logo">
 						<i className="fas fa-book-reader"></i>
-						<span className="icon-name">DR.NoteBook</span>
+						<span className="icon-name">dr.NoteBook</span>
 					</div>
 				</div>
 				<div className="menu-container">

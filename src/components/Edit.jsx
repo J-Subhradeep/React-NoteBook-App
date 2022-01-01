@@ -8,17 +8,38 @@ import IconButton from "@mui/material/IconButton";
 import InsertEmoticonIcon from "@mui/icons-material/InsertEmoticon";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
-const PostData = () => {
+const Edit = () => {
 	const [chosenEmoji, setChosenEmoji] = useState(false);
 	const [item, setItem] = useState();
 	const [description, setDescription] = useState("");
 	const [title, setTitle] = useState("");
 	const [username, setUsername] = useState("");
+	const [defaultData, setDefaultData] = useState({});
 	useEffect(() => {
-		if (!localStorage.getItem("user_id")) {
+		if (!localStorage.getItem("token")) {
 			navigate("/login");
 		}
 	}, []);
+	useEffect(() => {
+		let note_id = localStorage.getItem("note_id");
+		axios
+			.post("http://127.0.0.1:8000/foreditget/", {
+				token: localStorage.getItem("token"),
+				note_id: note_id,
+			})
+			.then((a) => {
+				console.log(a.data);
+				setDefaultData(a.data);
+				setTitle(a.data.title);
+				setUsername(a.data.written_by);
+				setDescription(a.data.description);
+			})
+			.catch((err) => {
+				console.log(err);
+				navigate("/login");
+			});
+	}, []);
+
 	const onEmojiClick = (event, emojiObject) => {
 		var now = document.activeElement;
 		console.log(now);
@@ -43,11 +64,11 @@ const PostData = () => {
 						onSubmit={(e) => {
 							e.preventDefault();
 							axios
-								.post("http://127.0.0.1:8000/postnotes/", {
+								.put(`http://127.0.0.1:8000/foreditget/${defaultData.id}/`, {
 									title: title,
 									description: description,
 									token: localStorage.getItem("token"),
-									written_by: username,
+									username: username,
 								})
 								.then((a) => {
 									navigate("/");
@@ -67,7 +88,7 @@ const PostData = () => {
 									onChange={(e) => {
 										setTitle(e.target.value);
 									}}
-									defaultValue=" "
+									// defaultValue={defaultData.title}
 								/>{" "}
 								<TextField
 									required
@@ -77,7 +98,7 @@ const PostData = () => {
 									onChange={(e) => {
 										setUsername(e.target.value);
 									}}
-									defaultValue="Hello World"
+									// defaultValue={defaultData.written_by}
 								/>
 							</div>
 
@@ -156,4 +177,4 @@ const PostData = () => {
 	);
 };
 
-export default PostData;
+export default Edit;

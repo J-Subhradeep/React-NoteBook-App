@@ -10,10 +10,13 @@
 	padding-top: 10px;
 	border-bottom: 1px solid black;
 }
+.showmorelink {
+	font-size: 15px;
+}
 .description-content::-webkit-scrollbar {
 	height: 10px;
 	border-radius: 5px;
-	background-color: white;
+	background-color: rgba(82, 80, 80, 0.315);
 }
 .description-content::-webkit-scrollbar-thumb {
 	background-color: rgba(0, 0, 0, 0.335);
@@ -37,8 +40,8 @@
 	grid-template-columns: 6fr 2fr;
 }
 .titletext::selection {
-	background-color: white;
-	color: #1976d2;
+	background-color: #1976d2;
+	color: #ffffff;
 }
 .mainpostdatabody {
 	position: absolute;
@@ -69,7 +72,15 @@
 	grid-gap: 0.5rem;
 	margin-bottom: 20px;
 }
-
+.description-content {
+	font-size: 20px;
+	font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+.maintitletext {
+	text-decoration: underline;
+	text-underline-offset: 0.5rem;
+	display: inline;
+}
 /* media quaries */
 @media screen and (max-width: 770px) {
 	.homeheaderdiv {

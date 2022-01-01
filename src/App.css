@@ -45,11 +45,14 @@ body::-webkit-scrollbar-thumb {
 	margin-top: 10px;
 }
 .postbody {
-	background-color: #1976d2;
+	background-color: #ffffffb0;
 	border-radius: 10px;
 	box-shadow: #0b3661 0 4px 6px 0px;
-	color: white;
+	color: rgb(0, 0, 0);
 	margin-bottom: 20px;
+}
+.postbody::selection {
+	background-color: #1976d2;
 }
 .icon-name {
 	padding-left: 10px;

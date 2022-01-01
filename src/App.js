@@ -10,6 +10,7 @@ import SignUp from "./components/signup";
 import { useState, useEffect } from "react";
 import PostData from "./components/postData";
 import Profile from "./components/profile";
+import Edit from "./components/Edit";
 
 function App() {
 	// const SignInWrap = () => {
@@ -39,7 +40,7 @@ function App() {
 	// 	}
 	// };
 	// var isLoggedIn = false;
-	
+
 	return (
 		<>
 			<BrowserRouter>
@@ -50,6 +51,7 @@ function App() {
 					<Route exact path="/login" element={<Login />} />
 					<Route exact path="/post" element={<PostData />} />
 					<Route exact path="/about" element={<Profile />} />
+					<Route exact path="/edit" element={<Edit />} />
 
 					{/* <Post/> */}
 					{/* </Route> */}
