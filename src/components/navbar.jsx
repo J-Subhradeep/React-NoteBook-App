@@ -120,7 +120,14 @@ function Navbar(props) {
 								"aria-labelledby": "basic-button",
 							}}
 						>
-							<MenuItem onClick={handleClose}>Edit Profile</MenuItem>
+							<MenuItem onClick={handleClose}>
+								<NavLink
+									to="/editprofile"
+									style={{ color: "black", textDecoration: "none" }}
+								>
+									Edit Profile
+								</NavLink>
+							</MenuItem>
 
 							<MenuItem
 								onClick={() => {

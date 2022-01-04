@@ -14,6 +14,8 @@ const PostData = () => {
 	const [description, setDescription] = useState("");
 	const [title, setTitle] = useState("");
 	const [username, setUsername] = useState("");
+	const [cursorPos, setCursorPos] = useState({ start: 0, end: 0 });
+	var navigate = useNavigate();
 	useEffect(() => {
 		if (!localStorage.getItem("user_id")) {
 			navigate("/login");
@@ -24,15 +26,19 @@ const PostData = () => {
 		console.log(now);
 		console.log(event);
 		if (item === "title") {
-			setTitle((prev) => prev + emojiObject.emoji);
+			// setTitle((prev) => prev + emojiObject.emoji);
+			let prevCur = title.slice(0, cursorPos.start);
+			let afterCur = title.slice(cursorPos.end);
+			setTitle(prevCur + emojiObject.emoji + afterCur);
+			console.log(prevCur, afterCur);
 		}
 		if (item === "description") {
-			setDescription((prev) => {
-				return prev + emojiObject.emoji;
-			});
+			let prevCur = description.slice(0, cursorPos.start);
+			let afterCur = description.slice(cursorPos.end);
+			setDescription(prevCur + emojiObject.emoji + afterCur);
 		}
 	};
-	const navigate = useNavigate();
+
 	return (
 		<>
 			<Navbar />
@@ -64,6 +70,18 @@ const PostData = () => {
 									onFocus={() => {
 										setItem("title");
 									}}
+									onClick={(e) => {
+										// console.log(e.selectionStart);
+										// let titlearea = document.getElementById("outline-required");
+										// console.log(e.target.selectionStart, e.target.selectionEnd);
+										setCursorPos((prev) => {
+											return {
+												...prev,
+												start: e.target.selectionStart,
+												end: e.target.selectionEnd,
+											};
+										});
+									}}
 									onChange={(e) => {
 										setTitle(e.target.value);
 									}}
@@ -91,6 +109,18 @@ const PostData = () => {
 								}}
 								onFocus={() => {
 									setItem("description");
+								}}
+								onClick={(e) => {
+									// console.log(e.selectionStart);
+									// let titlearea = document.getElementById("outline-required");
+									// console.log(e.target.selectionStart, e.target.selectionEnd);
+									setCursorPos((prev) => {
+										return {
+											...prev,
+											start: e.target.selectionStart,
+											end: e.target.selectionEnd,
+										};
+									});
 								}}
 								minRows={11}
 								// defaultValue="Default Value"

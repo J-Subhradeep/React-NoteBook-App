@@ -1,5 +1,6 @@
 import "./App.css";
 import "./profile.css";
+import "./editpage.css";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 // import { Redirect } from "react-router";
 // import {Switch} from 'react-router'
@@ -11,6 +12,7 @@ import { useState, useEffect } from "react";
 import PostData from "./components/postData";
 import Profile from "./components/profile";
 import Edit from "./components/Edit";
+import EditProfilePage from "./components/EditProfilePage";
 
 function App() {
 	// const SignInWrap = () => {
@@ -52,7 +54,7 @@ function App() {
 					<Route exact path="/post" element={<PostData />} />
 					<Route exact path="/about" element={<Profile />} />
 					<Route exact path="/edit" element={<Edit />} />
-
+					<Route exact path="/editprofile" element={<EditProfilePage />} />
 					{/* <Post/> */}
 					{/* </Route> */}
 				</Routes>
