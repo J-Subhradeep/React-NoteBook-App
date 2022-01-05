@@ -28,6 +28,7 @@ const EditProfilePage = () => {
       .then((a) => {
         setEmail(a.data.email);
         setUsername(a.data.username);
+        setNewemail(a.data.email);
       });
   }, []);
   return (
@@ -41,7 +42,7 @@ const EditProfilePage = () => {
               <TextField
                 required
                 id="outlined-required"
-                label="Email"
+                label="Old Email"
                 type="email"
                 value={email}
                 style={{ marginTop: "10px", width: "100%", minWidth: "270px" }}
@@ -102,13 +103,21 @@ const EditProfilePage = () => {
                 variant="contained"
                 onClick={(e) => {
                   e.preventDefault();
-                  axios.post("http://localhost:8000/edituser/", {
-                    email: email,
-                    newemail: newemail,
-                    password: password,
-                    newpassword: newpassword,
-                    username: username,
-                  });
+                  axios
+                    .post("http://localhost:8000/edituser/", {
+                      email: email,
+                      newemail: newemail,
+                      password: password,
+                      newpassword: newpassword,
+                      username: username,
+                    })
+                    .then((a) => {
+                      console.log(a);
+                      navigate("/");
+                    })
+                    .catch(() => {
+                      alert("Please Enter Your Valid Email and Password");
+                    });
                 }}
                 endIcon={<SaveIcon />}
               >
@@ -120,6 +129,9 @@ const EditProfilePage = () => {
                 type="submit"
                 variant="contained"
                 endIcon={<CancelIcon />}
+                onClick={() => {
+                  navigate("/");
+                }}
               >
                 Cancel
               </Button>
